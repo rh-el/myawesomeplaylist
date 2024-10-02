@@ -35,8 +35,6 @@ function App() {
         setButtonText('another one')
       } else {
         setValid(false)
-        setPlaceholder('please enter a valid url')
-        console.log('nope');
       }
     }, [input]
   )
@@ -69,7 +67,7 @@ function App() {
             <h2 className='second'>04/10/2024</h2>
             </div>
             <Input placeholder={placeholder} valid={valid} input={input} handleInputChange={handleInputChange} />
-            {!valid && <p>please enter a <span className='bg-customred text-custompink'>valid url</span></p>}
+            {!valid && <p className='second'>please enter a <span className=' bg-customred text-custompink'>valid url</span></p>}
             <Button buttonText={buttonText} handleSubmit={handleSubmit} input={input} />
           </div>
         </div>
