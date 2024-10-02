@@ -4,15 +4,15 @@ import Input from './components/Input'
 import Button from './components/Button'
 import React from 'react'
 
-const supabaseUrl = 'https://uthbmnlhrpippnxvnkbv.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0aGJtbmxocnBpcHBueHZua2J2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc4NjE1MTUsImV4cCI6MjA0MzQzNzUxNX0.qXQkfLnmGrEp4T2xaQ2KzEDajCUBl4HTrm5xt9r_4uI'
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 
 function App() {
 
   const [input, setInput] = useState('')
-  const [placeholder, setPlaceholder] = useState('drop a youtube or spotify banger')
+  const [placeholder, setPlaceholder] = useState('drop a youtube or spotify link')
   const [buttonText, setButtonText] = useState('submit')
 
 
