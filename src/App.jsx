@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import Input from './components/Input'
 import Button from './components/Button'
 import React from 'react'
+import isValidUrl from './scripts/utils'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -14,6 +15,7 @@ function App() {
   const [input, setInput] = useState('')
   const [placeholder, setPlaceholder] = useState('drop a youtube or spotify link')
   const [buttonText, setButtonText] = useState('submit')
+  const [valid, setValid] = useState(true)
 
 
   const handleInputChange = useCallback(
@@ -24,10 +26,18 @@ function App() {
 
   const handleSubmit = useCallback(
     () => {
+      const isValid = isValidUrl(input)
+      if (isValid) {
+        setValid(true)
         insertTrack(input)
         setInput('')  
-        setPlaceholder('thanks! another one??')  
-        setButtonText('another one')  
+        setPlaceholder('thanks! another one??')
+        setButtonText('another one')
+      } else {
+        setValid(false)
+        setPlaceholder('please enter a valid url')
+        console.log('nope');
+      }
     }, [input]
   )
 
@@ -58,7 +68,8 @@ function App() {
             <h2 className='second text-xl'>ada tech school - spring break @cancun</h2>
             <h2 className='second'>04/10/2024</h2>
             </div>
-            <Input placeholder={placeholder} input={input} handleInputChange={handleInputChange} />
+            <Input placeholder={placeholder} valid={valid} input={input} handleInputChange={handleInputChange} />
+            {!valid && <p>please enter a <span className='bg-customred text-custompink'>valid url</span></p>}
             <Button buttonText={buttonText} handleSubmit={handleSubmit} input={input} />
           </div>
         </div>
