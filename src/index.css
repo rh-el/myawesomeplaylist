@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "RX100";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    
+    src: url(./assets/fonts/RX100-Regular.otf);
+  }
+
+} 
+
+* {
+  font-family: 'RX100';
+}
+
+::selection {
+  background-color: #FDD8D0;
+  color: #e74c34
+}
+
+.second::selection {
+  background-color: #e74c34;
+  color: #FDD8D0
+}
